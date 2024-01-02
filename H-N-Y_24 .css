@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,600;6..12,700&family=Oswald:wght@500;600;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Oswald', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    background:#3d3d3d;
+}
+
+.container{
+    position: absolute;
+    display: flex;
+    transform-style: preserve-3d;
+    gap: 10px;
+    transform: rotateY(30deg) rotateX(12deg);
+}
+
+.container .text{
+    position: relative;
+    height:100px;
+    width:100px;
+    transform-style:preserve-3d;
+    transition:2.5s ease-in-out;
+    transition-delay: calc(0.25s * var(--j));
+}
+
+.container.newyear .text{
+    transform: rotateX(calc(-360deg * 1));
+}
+
+.container.newyear .text:last-child{
+    transform: rotateX(calc(-630deg * 1));
+}
+
+.container .text span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    color: #fff;
+    font-size: 4rem;
+    background: linear-gradient(#434343, #535353);
+    /* transform: rotateX(calc(90deg * var(--i))) translateZ(50px); */
+    transform:rotateX(calc(90deg * var(--i))) translateZ(50px); 
+
+    cursor: default;
+}
+
+.container .text::before{
+    content: '' ;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #373737;
+    transform-origin:left;
+    transform: rotateY(90deg) translateX(-50px);
+}
+
+.container .text:last-child span{
+    background: linear-gradient(#25c040, #32ed4e);
+}
+
+.container .text:last-child::before{
+    background: #11a728;
+
+}
+
+h2{
+    position: absolute;
+    bottom: 50px;
+    color: #252525;
+    font-size: 2rem;
+    transition:0.5s;
+    cursor: pointer;
+}
+
+h2.active{
+    color: #fff;
+    text-shadow: 0 0 15px #fff, 0 0 50px #fff;
+}
+
+h2::after{
+    content: ' 2024';
+    transition:0.5s;
+}
+
+h2.active::after{
+    color: #32ed4e;
+    text-shadow: 0 0 15px #32ed4e, 0 0 50px #32ed4e;
+}
+
+.gloing{
+    position: relative;
+    min-width:750px;
+    height:750px;
+    pointer-events: none;
+    margin: -150px;
+    transform-origin: right;
+    animation: colorchange 5s linear infinite;
+}
+
+@keyframes colorchange{
+    0%{
+        filter:hue-rotate(0deg) ;
+        transform:rotate(0deg);
+    }
+    100%{
+        filter:hue-rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
+
+.gloing span{
+    position: absolute;
+    top:calc(80px * var(--i)) ;
+    left:calc(80px * var(--i)) ;
+    bottom: calc(80px * var(--i));
+    right:calc(80px * var(--i));
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.gloing span::before{
+    content: '';
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    top: 50%;
+    left: -8px;
+    background: #f00;
+}
+
+.gloing span:nth-child(3n +1) {
+    animation: animate 10s alternate infinite;
+}
+.gloing span:nth-child(3n +2) {
+    animation: animate-revers 13s alternate infinite;
+}
+.gloing span:nth-child(3n +3) {
+    animation: animate-revers 8s alternate infinite;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-revers{
+    0%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
+.gloing span:nth-child(3n +1)::before{
+    background: rgba(134,255,0,1);
+    box-shadow:0 0 20px rgba(134,255,0,1),
+    0 0 40px rgba(134,255,0,1),
+    0 0 60px rgba(134,255,0,1),
+    0 0 80px rgba(134,255,0,1),
+    0 0 0 4px rgba(134,255,0,0.1);
+}
+.gloing span:nth-child(3n +2)::before{
+    background: rgba(255,214,0,1);
+    box-shadow:0 0 20px rgba(255,214,0,1),
+    0 0 40px rgba(255,214,0,1),
+    0 0 60px rgba(255,214,0,1),
+    0 0 80px rgba(255,214,0,1),
+    0 0 0 4px rgba(255,214,0,0.1);
+}
+.gloing span:nth-child(3n +3)::before{
+    background: rgba(0,226,255,1);
+    box-shadow:0 0 20px rgba(0,226,255,1),
+    0 0 40px rgba(0,226,255,1),
+    0 0 60px rgba(0,226,255,1),
+    0 0 80px rgba(0,226,255,1),
+    0 0 0 4px rgba(0,226,255,0.1);
+}
